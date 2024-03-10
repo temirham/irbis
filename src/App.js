@@ -1,25 +1,47 @@
-import logo from './logo.svg';
-import './App.css';
+import * as React from 'react';
+import CssBaseline from '@mui/material/CssBaseline';
+import Box from '@mui/material/Box';
+import Divider from '@mui/material/Divider';
+import { ThemeProvider, createTheme } from '@mui/material/styles';
+import AppAppBar from './components/AppAppBar';
+import Hero from './components/Hero';
+import LogoCollection from './components/LogoCollection';
+import Highlights from './components/Highlights';
+// import Pricing from './components/Pricing';
+import Services from './components/Services';
+import Testimonials from './components/Testimonials';
+import FAQ from './components/FAQ';
+import Footer from './components/Footer';
 
-function App() {
+
+export default function LandingPage() {
+  const [mode, setMode] = React.useState('dark');
+  const defaultTheme = createTheme({ palette: { mode } });
+
+  const toggleColorMode = () => {
+    setMode((prev) => (prev === 'dark' ? 'light' : 'dark'));
+  };
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ThemeProvider theme={defaultTheme}>
+      <CssBaseline />
+      <AppAppBar mode={mode} toggleColorMode={toggleColorMode} />
+      <Hero theme={defaultTheme} />
+      <Box sx={{ bgcolor: 'background.default' }}>
+        <LogoCollection />
+        <Services />
+        <Divider />
+        <Testimonials />
+        <Divider />
+        <Highlights />
+        <Divider />
+        {/* <Pricing /> */}
+        <Divider />
+        <FAQ />
+        <Divider />
+        <Footer />
+      </Box>
+    </ThemeProvider>
   );
 }
-
-export default App;
