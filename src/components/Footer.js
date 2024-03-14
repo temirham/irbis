@@ -188,7 +188,7 @@ export default function Footer() {
         >
           <IconButton
             color="inherit"
-            href="https://t.me/yourtelegramchannel"
+            href="https://t.me/+KDLgNenNxwRlYjUy"
             aria-label="Telegram"
             sx={{ alignSelf: 'center' }}
           >
