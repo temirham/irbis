@@ -36,7 +36,7 @@ export default function Hero({ theme }) {
         <Stack spacing={2} useFlexGap sx={{ width: { xs: '100%', sm: '70%' } }}>
         <Typography
           component="h1"
-          variant="h1"
+          variant="h2"
           sx={{
             display: 'flex',
             flexDirection: { xs: 'column', md: 'row' },
@@ -51,7 +51,7 @@ export default function Hero({ theme }) {
               theme.palette.mode === 'light' ? theme.palette.primary.main : theme.palette.primary.light,
           }}
         >
-          Поможем вам добиться успеха&nbsp;
+          Поможем вам добиться успеха
           <Typography
             component="span"
             variant="h1"
