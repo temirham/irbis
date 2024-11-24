@@ -99,7 +99,7 @@ export default function Hero({ theme }) {
           </Typography>
         </Stack>
         
-        <Box
+        {/* <Box
           id="image"
           sx={(theme) => ({
             mt: { xs: 8, sm: 10 },
@@ -124,7 +124,7 @@ export default function Hero({ theme }) {
           ) : (
             <TradingViewWidgetDark />
           )}
-        </Box>
+        </Box> */}
       </Container>
     </Box>
   );

@@ -12,6 +12,8 @@ import TelegramIcon from '@mui/icons-material/Telegram';
 import YouTubeIcon from '@mui/icons-material/YouTube';
 import TwitterIcon from '@mui/icons-material/X';
 
+import ContactWidget from './ContactWidget';
+
 const logoStyle = {
   width: '140px',
   height: 'auto',
@@ -212,6 +214,7 @@ export default function Footer() {
           </IconButton>
         </Stack>
       </Box>
+      <ContactWidget />
     </Container>
   );
 }
