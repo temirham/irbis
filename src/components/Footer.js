@@ -10,9 +10,6 @@ import Typography from '@mui/material/Typography';
 
 import TelegramIcon from '@mui/icons-material/Telegram';
 import YouTubeIcon from '@mui/icons-material/YouTube';
-import TwitterIcon from '@mui/icons-material/X';
-
-import ContactWidget from './ContactWidget';
 
 const logoStyle = {
   width: '140px',
@@ -23,7 +20,7 @@ function Copyright() {
   return (
     <Typography variant="body2" color="text.secondary" mt={1}>
       {'Copyright © '}
-      <Link href="https://mui.com/">Sitemark&nbsp;</Link>
+      <Link href="#">Юридическая фирма "Ваш Защитник"&nbsp;</Link>
       {new Date().getFullYear()}
     </Typography>
   );
@@ -47,6 +44,7 @@ export default function Footer() {
           flexDirection: { xs: 'column', sm: 'row' },
           width: '100%',
           justifyContent: 'space-between',
+          gap: { xs: 4, sm: 8 }, // Отступы между столбцами
         }}
       >
         <Box
@@ -60,18 +58,16 @@ export default function Footer() {
           <Box sx={{ width: { xs: '100%', sm: '60%' } }}>
             <Box sx={{ ml: '-15px' }}>
               <img
-                src={
-                  '/static/logo/logo 1.svg'
-                }
+                src={'/static/logo/logo 1.svg'}
                 style={logoStyle}
-                alt="логотип Sitemark"
+                alt="логотип компании"
               />
             </Box>
             <Typography variant="body2" fontWeight={600} gutterBottom>
               Рассылка
             </Typography>
             <Typography variant="body2" color="text.secondary" mb={2}>
-              Подпишитесь на нашу рассылку для еженедельных обновлений и акций.
+              Подпишитесь на нашу рассылку, чтобы получать актуальные юридические советы и новости.
             </Typography>
             <Stack direction="row" spacing={1} useFlexGap>
               <TextField
@@ -93,89 +89,9 @@ export default function Footer() {
             </Stack>
           </Box>
         </Box>
-        <Box
-          sx={{
-            display: { xs: 'none', sm: 'flex' },
-            flexDirection: 'column',
-            gap: 1,
-          }}
-        >
-          <Typography variant="body2" fontWeight={600}>
-            Продукт
-          </Typography>
-          <Link color="text.secondary" href="#services">
-            Услуги
-          </Link>
-          <Link color="text.secondary" href="#testimonials">
-            Отзывы
-          </Link>
-          <Link color="text.secondary" href="#highlights">
-            Преимущества
-          </Link>
-          <Link color="text.secondary" href="#faq">
-            Часто задаваемые вопросы
-          </Link>
-        </Box>
-        <Box
-          sx={{
-            display: { xs: 'none', sm: 'flex' },
-            flexDirection: 'column',
-            gap: 1,
-          }}
-        >
-          <Typography variant="body2" fontWeight={600}>
-            Компания
-          </Typography>
-          <Link color="text.secondary" href="#about">
-            О нас
-          </Link>
-          <Link color="text.secondary" href="#career">
-            Карьера
-          </Link>
-          <Link color="text.secondary" href="#press">
-            Пресса
-          </Link>
-        </Box>
-        <Box
-          sx={{
-            display: { xs: 'none', sm: 'flex' },
-            flexDirection: 'column',
-            gap: 1,
-          }}
-        >
-          <Typography variant="body2" fontWeight={600}>
-            Юридическое
-          </Typography>
-          <Link color="text.secondary" href="#terms">
-            Условия
-          </Link>
-          <Link color="text.secondary" href="#privacy">
-            Конфиденциальность
-          </Link>
-          <Link color="text.secondary" href="#contact">
-            Контакты
-          </Link>
-        </Box>
-      </Box>
-      <Box
-        sx={{
-          display: 'flex',
-          justifyContent: 'space-between',
-          pt: { xs: 4, sm: 8 },
-          width: '100%',
-          borderTop: '1px solid',
-          borderColor: 'divider',
-        }}
-      >
         <div>
           <Link color="text.secondary" href="#privacy-policy">
             Политика конфиденциальности
-          </Link>
-          <Typography display="inline" sx={{ mx: 0.5, opacity: 0.5 }}>
-            &nbsp;•&nbsp;
-          </Typography>
-          <Link color="text.secondary" href="#terms-of-service">
-            Условия обслуживания
           </Link>
           <Copyright />
         </div>
@@ -204,17 +120,8 @@ export default function Footer() {
           >
             <YouTubeIcon />
           </IconButton>
-          <IconButton
-            color="inherit"
-            href="https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstley"
-            aria-label="YouTube"
-            sx={{ alignSelf: 'center' }}
-          >
-            <TwitterIcon />
-          </IconButton>
         </Stack>
       </Box>
-      <ContactWidget />
     </Container>
   );
 }
