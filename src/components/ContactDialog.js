@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 import {
   Box,
   Button,
@@ -7,21 +8,40 @@ import {
   TextField,
   Checkbox,
   FormControlLabel,
+  MenuItem,
+  Select,
+  InputLabel,
+  FormControl,
 } from '@mui/material';
 import InputMask from 'react-input-mask';
 
 export default function ContactDialog({ open, onClose }) {
-  const [formData, setFormData] = useState({ name: '', phone: '', agree: false });
+  const [formData, setFormData] = useState({
+    name: '',
+    phone: '',
+    agree: false,
+    topic: 'Другое', // Добавляем поле для выбора темы
+  });
 
   const handleChange = (event) => {
     const { name, value, checked, type } = event.target;
     setFormData({ ...formData, [name]: type === 'checkbox' ? checked : value });
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     if (formData.agree) {
-      console.log('Submitted Data:', formData);
-      onClose();
+      try {
+        const response = await axios.post('https://11bf-5-228-114-82.ngrok-free.app/api/contact', {
+          name: formData.name,
+          phone: formData.phone,
+          topic: formData.topic, // Отправляем выбранную тему
+        });
+        console.log('Response:', response.data);
+        onClose();
+      } catch (error) {
+        console.error('Error submitting form:', error);
+        alert('Произошла ошибка. Попробуйте снова.');
+      }
     } else {
       alert('Вы должны согласиться с политикой конфиденциальности.');
     }
@@ -67,6 +87,24 @@ export default function ContactDialog({ open, onClose }) {
             />
           )}
         </InputMask>
+        <FormControl fullWidth sx={{ mb: 2 }} variant="outlined">
+          <InputLabel id="topic-label" shrink>
+            Тема обращения
+          </InputLabel>
+          <Select
+            labelId="topic-label"
+            name="topic"
+            value={formData.topic}
+            onChange={handleChange}
+            label="Тема обращения" // Это нужно для отображения текста в outlined стиле
+          >
+            <MenuItem value="Мошенничество">Мошенничество</MenuItem>
+            <MenuItem value="Бракоразводный процесс">Бракоразводный процесс</MenuItem>
+            <MenuItem value="Земельные споры">Земельные споры</MenuItem>
+            <MenuItem value="Интеллектуальное право">Интеллектуальное право</MenuItem>
+            <MenuItem value="Другое">Другое</MenuItem>
+          </Select>
+        </FormControl>
         <FormControlLabel
           control={
             <Checkbox
